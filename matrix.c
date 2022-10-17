@@ -84,6 +84,4 @@ Matrix *matrix_mul_m(Matrix *m1, Matrix *m2) {
   }
 
   return result;
-
-  return result;
 }
