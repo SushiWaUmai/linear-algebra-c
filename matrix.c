@@ -13,6 +13,22 @@ Matrix *matrix_create(int rows, int columns) {
   return result;
 }
 
+Matrix *matrix_create_fill(int rows, int colums, float *data) {
+  Matrix *result = matrix_create(rows, colums);
+  matrix_fill(result, data);
+  return result;
+}
+
+Matrix *matrix_create_identity(int size) {
+  Matrix *result = matrix_create(size, size);
+
+  for (int i = 0; i < size; i++) {
+    result->values[i * size + i] = 1;
+  }
+  
+  return result;
+}
+
 void matrix_destroy(Matrix *target) {
   free(target->values);
   free(target);
@@ -85,3 +101,27 @@ Matrix *matrix_mul_m(Matrix *m1, Matrix *m2) {
 
   return result;
 }
+
+float matrix_trace(Matrix *target) {
+  assert(target->columns == target->rows);
+  float result = 0;
+
+  for (int i = 0; i < target->rows; i++) {
+    result += target->values[i * target->rows + i];
+  }
+
+  return result;
+}
+
+Matrix *matrix_transpose(Matrix *target) {
+  Matrix *result = matrix_create(target->columns, target->rows);
+
+  for (int r = 0; r < target->rows; r++) {
+    for (int c = 0; c < target->columns; c++) {
+      result->values[c * target->rows + r] = target->values[r * target->columns + c];
+    }
+  }
+
+  return result;
+}
+
