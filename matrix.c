@@ -94,7 +94,7 @@ Matrix *matrix_mul_m(Matrix *m1, Matrix *m2) {
   for (int r = 0; r < m1->rows; r++) {
     for (int c = 0; c < m2->columns; c++) {
       for (int i = 0; i < m2->rows; i++) {
-        result->values[r * m2->columns + c] += m1->values[r * m1->columns + i] * m2->values[m2->rows * i + c];
+        result->values[r * m2->columns + c] += m1->values[r * m1->columns + i] * m2->values[m2->columns * i + c];
       }
     }
   }
