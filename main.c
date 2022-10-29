@@ -1,8 +1,7 @@
 #include <stdio.h>
 #include "matrix.h"
 
-int main(void) {
-
+void practice() {
   float a_data[] = {
     2, 3,
     5, 6
@@ -41,37 +40,37 @@ int main(void) {
   printf("\n");
 
   printf("c) \n");
-  Matrix *pc = matrix_mul_m(a, b); 
+  Matrix *pc = matrix_mul_m(a, b);
   matrix_print(pc);
   printf("\n");
 
   printf("d) \n");
-  // Matrix *pd = matrix_mul_m(a, c); 
+  // Matrix *pd = matrix_mul_m(a, c);
   // matrix_print(pd);
   printf("\n");
 
   printf("e) \n");
-  Matrix *pe = matrix_mul_m(c, a); 
+  Matrix *pe = matrix_mul_m(c, a);
   matrix_print(pe);
   printf("\n");
 
   printf("f) \n");
-  Matrix *pf = matrix_mul_m(u, a); 
+  Matrix *pf = matrix_mul_m(u, a);
   matrix_print(pf);
   printf("\n");
 
   printf("g) \n");
-  Matrix *pg = matrix_mul_m(a, v); 
+  Matrix *pg = matrix_mul_m(a, v);
   matrix_print(pg);
   printf("\n");
 
   printf("h) \n");
-  Matrix *ph = matrix_mul_m(u, v); 
+  Matrix *ph = matrix_mul_m(u, v);
   matrix_print(ph);
   printf("\n");
 
   printf("i) \n");
-  Matrix *pi = matrix_mul_m(v, u); 
+  Matrix *pi = matrix_mul_m(v, u);
   matrix_print(pi);
   printf("\n");
 
@@ -84,6 +83,8 @@ int main(void) {
   float pk = matrix_trace(b);
   printf("%f", pk);
   printf("\n");
+}
 
+int main(void) {
   return 0;
 }

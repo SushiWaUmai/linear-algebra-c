@@ -20,6 +20,7 @@ Matrix *matrix_mul_s(Matrix *target, float value);
 Matrix *matrix_mul_m(Matrix *m1, Matrix *m2);
 
 float matrix_trace(Matrix *target);
+float matrix_determinant(Matrix *target);
 Matrix *matrix_transpose(Matrix *target);
 
 #endif // MATRIX_H

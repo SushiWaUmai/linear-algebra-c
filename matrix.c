@@ -25,7 +25,7 @@ Matrix *matrix_create_identity(int size) {
   for (int i = 0; i < size; i++) {
     result->values[i * size + i] = 1;
   }
-  
+
   return result;
 }
 
@@ -99,6 +99,30 @@ Matrix *matrix_mul_m(Matrix *m1, Matrix *m2) {
     }
   }
 
+  return result;
+}
+
+float matrix_determinant(Matrix *target) {
+  assert(target->columns == target->rows);
+  float result = 0;
+
+  if (target->rows == 1) {
+    return target->values[0];
+  }
+
+  for (int i = 0; i < target->rows; i++) {
+    Matrix *tmp = matrix_create(target->rows - 1, target->columns - 1);
+    for (int c = 0; c < target->columns; c++) {
+      if (c == i)
+        c++;
+      for (int r = 1; r < target->rows; r++) {
+        tmp->values[(r - 1) * (target->rows - 1) + c + (c >= i ? -1 : 0)] = target->values[r * target->columns + c];
+      }
+    }
+    int sign = i % 2 == 0 ? 1 : -1;
+    result += sign * target->values[i] * matrix_determinant(tmp);
+    matrix_destroy(tmp);
+  }
   return result;
 }
 
